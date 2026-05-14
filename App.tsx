@@ -3,13 +3,10 @@ import { useCantonWallet } from './useCantonWallet'
 
 export default function App() {
   const { state, wcUri, account, error, connect, disconnect } = useCantonWallet()
-
   return (
     <div style={css.root}>
       <div style={css.grid} />
       <div style={css.card}>
-
-        {/* Header */}
         <div style={css.header}>
           <div style={css.logo}>
             <span style={css.logoC}>C</span>
@@ -17,10 +14,7 @@ export default function App() {
           </div>
           <span style={css.badge}>× WalletConnect</span>
         </div>
-
         <div style={css.body}>
-
-          {/* IDLE */}
           {state === 'idle' && (
             <div style={css.center}>
               <p style={css.hint}>
@@ -33,8 +27,6 @@ export default function App() {
               <button style={css.btn} onClick={connect}>Connect Wallet</button>
             </div>
           )}
-
-          {/* CONNECTING — show QR + URI */}
           {state === 'connecting' && (
             <div style={css.center}>
               {wcUri ? (
@@ -65,16 +57,12 @@ export default function App() {
               )}
             </div>
           )}
-
-          {/* ERROR */}
           {state === 'error' && (
             <div style={css.center}>
               <div style={css.errorBox}>{error}</div>
               <button style={css.btn} onClick={connect}>Retry</button>
             </div>
           )}
-
-          {/* CONNECTED */}
           {state === 'connected' && account && (
             <div>
               <div style={css.connectedRow}>
@@ -100,9 +88,7 @@ export default function App() {
               </button>
             </div>
           )}
-
         </div>
-
         <div style={css.footer}>
           docs.walletconnect.network/wallet-sdk/chain-support/canton
         </div>
